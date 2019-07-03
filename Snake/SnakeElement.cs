@@ -3,11 +3,9 @@ using System.Drawing;
 
 namespace Snake
 {
-    public class SnakeElement : IDrawable
+    public class SnakeElement : Block, IDrawable
     {
-        public Color Color { get; set; }
-
-        public Point Coords { get; set; }
+        public Color Color { get; set; }        
 
         public Shape Shape { get; set; } = Shape.Square;
 
@@ -35,7 +33,7 @@ namespace Snake
                 }
                 case Shape.Square:
                 {
-                    graphics.FillRectangle(brush, Coords.X, Coords.Y, GameContext.CurrentSettings.ElementSize - GameContext.CurrentSettings.Offset, GameContext.CurrentSettings.ElementSize - GameContext.CurrentSettings.Offset);
+                    graphics.FillRectangle(brush, Coords.X - GameContext.CurrentSettings.Offset, Coords.Y - GameContext.CurrentSettings.Offset, GameContext.CurrentSettings.ElementSize - GameContext.CurrentSettings.Offset * 2, GameContext.CurrentSettings.ElementSize - GameContext.CurrentSettings.Offset * 2);
                     break;
                 }
                 default:
@@ -74,38 +72,14 @@ namespace Snake
             return false;
         }
 
-        public bool HasBlockCollision(SnakeElement element)
+        public bool HasBlockCollision(Block element)
         {
             if (Coords.X == element.Coords.X && Coords.Y == element.Coords.Y)
             {
                 return true;
-            }
-
-            // from the right side
-            if (this.BottomRight.X > element.TopLeft.X && this.BottomRight.X < element.BottomRight.X)
-            {
-                return true;
-            }
-
-            // from the top side
-            if (this.BottomRight.Y > element.TopLeft.Y && this.BottomRight.Y < element.BottomRight.Y)
-            {
-                return true;
-            }
-
-            // from the left side
-            if (this.TopLeft.X < element.BottomRight.X && this.TopLeft.X > element.TopLeft.X)
-            {
-                return true;
-            }
-
-            // from the bottom side
-            if (this.TopLeft.Y < element.BottomRight.Y && this.TopLeft.Y > element.TopLeft.Y)
-            {
-                return true;
-            }
+            }           
 
             return false;
-        }
+        }        
     }
 }

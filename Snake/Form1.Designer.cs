@@ -29,67 +29,56 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.gamePanel = new System.Windows.Forms.Panel();
-            this.drawingPanel = new System.Windows.Forms.PictureBox();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.drawingPanel = new System.Windows.Forms.PictureBox();
             this.GameEndLabel = new System.Windows.Forms.Label();
-            this.gamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawingPanel)).BeginInit();
             this.SuspendLayout();
             // 
-            // gamePanel
-            // 
-            this.gamePanel.Controls.Add(this.GameEndLabel);
-            this.gamePanel.Controls.Add(this.drawingPanel);
-            this.gamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gamePanel.Location = new System.Drawing.Point(0, 0);
-            this.gamePanel.Name = "gamePanel";
-            this.gamePanel.Size = new System.Drawing.Size(1034, 611);
-            this.gamePanel.TabIndex = 0;
-            // 
             // drawingPanel
             // 
-            this.drawingPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.drawingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.drawingPanel.Location = new System.Drawing.Point(0, 0);
+            this.drawingPanel.Margin = new System.Windows.Forms.Padding(0);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(1034, 545);
+            this.drawingPanel.Size = new System.Drawing.Size(1242, 551);
             this.drawingPanel.TabIndex = 0;
             this.drawingPanel.TabStop = false;
             // 
             // GameEndLabel
             // 
             this.GameEndLabel.AutoSize = true;
-            this.GameEndLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GameEndLabel.Location = new System.Drawing.Point(497, 263);
+            this.GameEndLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GameEndLabel.Location = new System.Drawing.Point(479, 208);
             this.GameEndLabel.Name = "GameEndLabel";
-            this.GameEndLabel.Size = new System.Drawing.Size(44, 25);
+            this.GameEndLabel.Size = new System.Drawing.Size(59, 32);
             this.GameEndLabel.TabIndex = 1;
             this.GameEndLabel.Text = "GG";
-            this.GameEndLabel.Visible = false;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 611);
-            this.Controls.Add(this.gamePanel);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1310, 642);
+            this.Controls.Add(this.GameEndLabel);
+            this.Controls.Add(this.drawingPanel);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            this.gamePanel.ResumeLayout(false);
-            this.gamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawingPanel)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel gamePanel;
-        private System.Windows.Forms.PictureBox drawingPanel;
         private System.Windows.Forms.Timer mainTimer;
+        private System.Windows.Forms.PictureBox drawingPanel;
         private System.Windows.Forms.Label GameEndLabel;
     }
 }

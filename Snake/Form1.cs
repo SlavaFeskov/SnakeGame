@@ -8,28 +8,66 @@ namespace Snake
     {
         public Snake Snake { get; set; }
 
+        public Apple Apple { get; set; }
+
+        public Drawer Drawer { get; set; }
+
+        public int EatenAppleCount { get; set; } = 0;
+
         public MainForm()
         {
             InitializeComponent();
+            Drawer = new Drawer();
             GameEndLabel.Visible = false;            
-            mainTimer.Tick += Tick;
+            mainTimer.Tick += Tick;                        
+            drawingPanel.Width = GameContext.CurrentSettings.WindowWidth;
+            drawingPanel.Height = GameContext.CurrentSettings.WindowHeight;            
             Snake = new Snake(GameContext.CurrentSettings.SnakeLength);
+            GameContext.FillField();
             //Tick(31, new EventArgs());
-            mainTimer.Start();            
+            mainTimer.Start();                 
         }
 
         public void Tick(object o, EventArgs eventArgs)
         {
             try
-            {
+            {                
+                mainTimer.Interval = 100 - GameContext.CurrentSettings.Speed;
+
                 var bitmap = new Bitmap(drawingPanel.Width, drawingPanel.Height);
-                var graphics = Graphics.FromImage(bitmap);
+                var graphics = Graphics.FromImage(bitmap);                
+
                 Snake.Tick(graphics);
+
+                if (Apple == null)
+                {
+                    Apple = new Apple(Snake);
+                }
+                else
+                {
+                    if (Snake.Head.HasBlockCollision(Apple))
+                    {
+                        Snake.EatAppple();
+                        EatenAppleCount++;
+
+                        if (Levels.Level.Contains(EatenAppleCount))
+                        {
+                            GameContext.CurrentSettings.Speed += 5;
+                        }
+
+                        Apple = null;
+                    }
+                }
+
+                Drawer.Draw(graphics, new ObjectPaint<IDrawable> { Object =  Snake, Brush = null }, 
+                    new ObjectPaint<IDrawable> { Object = Apple, Brush = GameContext.AppleBrush});
+
                 drawingPanel.Image = bitmap;
             }
             catch (CollisionException)
             {
                 mainTimer.Stop();
+                GameEndLabel.Text = $"GG. Apples {EatenAppleCount}\r\n{GameContext.Log}";
                 GameEndLabel.Visible = true;
                 GameContext.GameEnded = true;
             }        

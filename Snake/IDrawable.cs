@@ -2,7 +2,7 @@
 
 namespace Snake
 {
-    interface IDrawable
+    public interface IDrawable
     {
         void Draw(Graphics graphics, Brush brush);
     }
