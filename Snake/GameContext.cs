@@ -23,6 +23,8 @@ namespace Snake
 
         public static Random Random { get; set; } = new Random(0);
 
+        public static Shape Shape { get; set; } = Shape.Circle;
+
         public static void FillField()
         {
             int xCells = (int)Math.Floor((double)CurrentSettings.WindowWidth / CurrentSettings.ElementSize);

@@ -5,9 +5,7 @@ namespace Snake
 {
     public class SnakeElement : Block, IDrawable
     {
-        public Color Color { get; set; }        
-
-        public Shape Shape { get; set; } = Shape.Square;
+        public Color Color { get; set; }                
 
         public Point TopLeft => Coords;
 
@@ -24,7 +22,7 @@ namespace Snake
 
         public void Draw(Graphics graphics, Brush brush)
         {
-            switch (Shape)
+            switch (GameContext.Shape)
             {
                 case Shape.Circle:
                 {
