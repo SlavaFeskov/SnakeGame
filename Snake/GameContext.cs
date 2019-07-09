@@ -17,13 +17,13 @@ namespace Snake
 
         public static Direction Direction { get; set; } = Direction.Top;        
 
-        public static bool GameEnded { get; set; } = false;
-
-        public static string Log { get; set; }
+        public static bool GameEnded { get; set; } = false;        
 
         public static Random Random { get; set; } = new Random(0);
 
         public static Shape Shape { get; set; } = Shape.Circle;
+
+        public static int PointPerApple { get; set; } = 10;
 
         public static void FillField()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Snake
@@ -25,7 +26,8 @@ namespace Snake
             Snake = new Snake(GameContext.CurrentSettings.SnakeLength);
             GameContext.FillField();
             //Tick(31, new EventArgs());
-            mainTimer.Start();                 
+            mainTimer.Start();
+            var t = new int[3];            
         }
 
         public void Tick(object o, EventArgs eventArgs)
@@ -67,7 +69,7 @@ namespace Snake
             catch (CollisionException)
             {
                 mainTimer.Stop();
-                GameEndLabel.Text = $"GG. Apples {EatenAppleCount}\r\n{GameContext.Log}";
+                GameEndLabel.Text = $@"Score: {EatenAppleCount * GameContext.PointPerApple}";
                 GameEndLabel.Visible = true;
                 GameContext.GameEnded = true;
             }        
@@ -122,6 +124,18 @@ namespace Snake
                     
                     break;
                 }
+                case Keys.Space:
+                {
+                    if (mainTimer.Enabled)
+                    {
+                        mainTimer.Stop();
+                    }
+                    else
+                    {
+                        mainTimer.Start();
+                    }                        
+                    break;                    
+                }
                 case Keys.Escape:
                 {
                     this.Close();
@@ -137,6 +151,8 @@ namespace Snake
             GameContext.GameEnded = false;
             mainTimer.Start();
             GameEndLabel.Visible = false;
+            EatenAppleCount = 0;
+            GameContext.CurrentSettings.Speed = 10;
         }
     }
 }

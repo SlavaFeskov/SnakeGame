@@ -32,39 +32,54 @@
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.drawingPanel = new System.Windows.Forms.PictureBox();
             this.GameEndLabel = new System.Windows.Forms.Label();
+            this.ScoreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.drawingPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // drawingPanel
             // 
             this.drawingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.drawingPanel.Location = new System.Drawing.Point(0, 0);
+            this.drawingPanel.Location = new System.Drawing.Point(9, 26);
             this.drawingPanel.Margin = new System.Windows.Forms.Padding(0);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(1242, 551);
+            this.drawingPanel.Size = new System.Drawing.Size(61, 24);
             this.drawingPanel.TabIndex = 0;
             this.drawingPanel.TabStop = false;
             // 
             // GameEndLabel
             // 
             this.GameEndLabel.AutoSize = true;
+            this.GameEndLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GameEndLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GameEndLabel.Location = new System.Drawing.Point(479, 208);
+            this.GameEndLabel.Location = new System.Drawing.Point(0, 0);
+            this.GameEndLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.GameEndLabel.Name = "GameEndLabel";
-            this.GameEndLabel.Size = new System.Drawing.Size(59, 32);
+            this.GameEndLabel.Size = new System.Drawing.Size(46, 26);
             this.GameEndLabel.TabIndex = 1;
             this.GameEndLabel.Text = "GG";
             // 
+            // ScoreLabel
+            // 
+            this.ScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScoreLabel.AutoSize = true;
+            this.ScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ScoreLabel.Location = new System.Drawing.Point(131, -3);
+            this.ScoreLabel.Name = "ScoreLabel";
+            this.ScoreLabel.Size = new System.Drawing.Size(77, 29);
+            this.ScoreLabel.TabIndex = 2;
+            this.ScoreLabel.Text = "Score";
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1310, 642);
+            this.ClientSize = new System.Drawing.Size(240, 94);
+            this.Controls.Add(this.ScoreLabel);
             this.Controls.Add(this.GameEndLabel);
             this.Controls.Add(this.drawingPanel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -80,6 +95,7 @@
         private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.PictureBox drawingPanel;
         private System.Windows.Forms.Label GameEndLabel;
+        private System.Windows.Forms.Label ScoreLabel;
     }
 }
 

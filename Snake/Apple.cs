@@ -44,8 +44,7 @@ namespace Snake
                 }
             }
 
-            var randNumber = GameContext.Random.Next(listOfFreePoints.Count - 1);
-            GameContext.Log = GameContext.Log + " " + randNumber;
+            var randNumber = GameContext.Random.Next(listOfFreePoints.Count - 1);            
             var spawnPoint = listOfFreePoints[randNumber];
 
             for (var i = 0; i < GameContext.Field.Length; i++)
